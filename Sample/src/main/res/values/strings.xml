@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Dependency Provider Sample</string>
+    <string name="hello_world">Hello world!</string>
+</resources>
