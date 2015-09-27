@@ -1,0 +1,1 @@
+Simple android instances provider
