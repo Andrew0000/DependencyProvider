@@ -11,7 +11,7 @@ public class ActivityScopedObject implements ScopedObject {
     @NonNull private final Object object;
     @NonNull private final Activity activity;
 
-    public ActivityScopedObject(@NonNull Object object, @NonNull  Activity activity) {
+    public ActivityScopedObject(@NonNull Object object, @NonNull Activity activity) {
         this.object = object;
         this.activity = activity;
     }

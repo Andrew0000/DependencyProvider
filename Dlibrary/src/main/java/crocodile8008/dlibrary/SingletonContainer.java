@@ -22,7 +22,7 @@ public class SingletonContainer {
      * Store instance of object
      */
     @Nullable
-    public static synchronized Object put(Object object) {
+    public static synchronized Object put(@NonNull Object object) {
         return instances.put(object.getClass(), object);
     }
 
@@ -32,7 +32,7 @@ public class SingletonContainer {
      * Note! You must call handleActivityDestroy() method for unbind this object
      */
     @Nullable
-    public static synchronized Object putForActivity(Object object, @NonNull Activity activity) {
+    public static synchronized Object putForActivity(@NonNull Object object, @NonNull Activity activity) {
         return instances.put(object.getClass(), new ActivityScopedObject(object, activity));
     }
 
@@ -48,7 +48,7 @@ public class SingletonContainer {
      * Get instance of object or null if object is not stored
      */
     @Nullable
-    public static synchronized <T> T get(Class<T> clazz) {
+    public static synchronized <T> T get(@NonNull Class<T> clazz) {
         Object object = instances.get(clazz);
         if (object != null) {
             if (object instanceof ActivityScopedObject) {
@@ -58,6 +58,13 @@ public class SingletonContainer {
             return clazz.cast(object);
         }
         return null;
+    }
+
+    /**
+     * Remove object with given class from this container
+     */
+    public static synchronized void remove(@NonNull Class clazz) {
+        instances.remove(clazz);
     }
 
     /**
